@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "15657359-b1c9d3f7-f5a0-4aed-ac00-6f99634d3130",
+		"name": "React Express Clarifai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Predict Upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/usr/Downloads/cat-unsplash.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:3000/predict/upload/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"predict",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Predict",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"imageUrl\": \"https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3000/predict/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"predict"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hello",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:3000/hello/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
