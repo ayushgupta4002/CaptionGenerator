@@ -23,20 +23,29 @@ export default function Output(props) {
                 <Table hover>
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Label</th>
-                            <th>Probability</th>
+                            <th>Caption    <button 
+                            onClick={() => {
+                            navigator.clipboard.writeText(outputs);
+                            // document.getElementById("custom-tooltip").style.display = "inline";
+                            // setTimeout(function () {
+                            //     document.getElementById("custom-tooltip").style.display = "none";
+                            // }, 1000);
+                        }}>copy</button></th>
+                            {/* <th>Label</th>
+                            <th>Probability</th> */}
+                            
                         </tr>
                     </thead>
                     <tbody>
-                        { 
+                    {outputs}
+                        {/* { 
                             outputs.map((o, i) => {
                             return <tr key={i}>
                                 <td>{i + 1}</td>
-                                <td>{o.name}</td>
+                                <td>{o}</td>
                                 <td>{o.value}</td>
                             </tr>
-                        })}
+                        })} */}
                     </tbody>
                 </Table>
             </Col>

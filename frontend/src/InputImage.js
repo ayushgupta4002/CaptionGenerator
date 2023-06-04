@@ -36,9 +36,7 @@ export default function InputImage(props) {
   const handleChangeImageUrl = (e) => {
     setImageUrl(e.target.value);
   };
-  const label = () => {
-    set(e.target.value);
-  };
+ 
 
 
   const predictImage = () => {
@@ -72,8 +70,8 @@ export default function InputImage(props) {
     axios
       .post("/predict/upload", formData)
       .then((res) => {
-        console.log(res.data.results);
-        setOutputs(res.data.results);
+        console.log(res.data.caption);
+        setOutputs(res.data.caption);
 
       })
       .catch((err) => {
@@ -133,7 +131,7 @@ export default function InputImage(props) {
               onChange={handleFileFormControlOnChange}
             />
           </Form.Group>
-          <Button onClick={()=>{predictImageViaUpload}}>Submit</Button>
+          <Button onClick={predictImageViaUpload}>Submit</Button>
         </div>
       )}
     </Stack>
