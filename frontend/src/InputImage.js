@@ -47,7 +47,7 @@ export default function InputImage(props) {
         imageUrl: imageUrl,
       })
       .then((res) => {
-        setOutputs(res.data.results);
+        setOutputs(res.data.caption);
       })
       .catch((err) => {
         alert(err);

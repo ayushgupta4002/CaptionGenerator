@@ -10,8 +10,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')));
-
-const OPENAI_API_KEY="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";
+const dotenv = require('dotenv');
+dotenv.config()
+const OPENAI_API_KEY=process.env.OPENAI_KEY;
 const { Configuration, OpenAIApi }= require('openai') ;
 const configuration = new Configuration({
 
