@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+.copy{
+  display: flex;
+  justify-content:space-between ;
+}
+#custom-tooltip {
+  display: none;
+  margin-left: 53%;
+  margin-bottom: 3vh;
+  z-index: 100;
+  padding: 2px 2px;
+  background-color: #6cb1b6df;
+  border-radius: 4px;
+  position: absolute;
+  color: #000000;
+}
+
+.copybutton{
+  cursor: pointer;
+  border: 1px solid #a59898;
+  background-color: #a8a8a8;
+  border-radius: 240px;
+  width:6%;
+  position: relative;
+  align-self: center;
+  font-size: 2vh;
+  font-weight: 600;
+  padding: 1vh;
+
+  
+  
+  /* margin-left: 5vh; */
+}
