@@ -132,12 +132,12 @@ router.post('/upload', upload.single('file'), async function (req, res, next) {
         ]
         const results = await predictImage(inputs);
 
-        // console.log("labels are");
-        // console.log(results[0].name);
-        // console.log(results[1].name);
-        // console.log(results[2].name);
-        // console.log(results[3].name);
-        // console.log(results[4].name);
+        console.log("labels are");
+        console.log(results[0].name);
+        console.log(results[1].name);
+        console.log(results[2].name);
+        console.log(results[3].name);
+        console.log(results[4].name);
 
         var label1=results[0].name;
         var label2=results[1].name;
