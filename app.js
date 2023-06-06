@@ -12,6 +12,7 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')));
 const dotenv = require('dotenv');
 dotenv.config()
+
 const OPENAI_API_KEY=process.env.OPENAI_KEY;
 const { Configuration, OpenAIApi }= require('openai') ;
 const configuration = new Configuration({
@@ -49,6 +50,7 @@ app.post("/chat",(req,res) => {
       });
    
 });
+  
 
 
 
