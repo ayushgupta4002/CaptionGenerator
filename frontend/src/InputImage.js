@@ -43,7 +43,7 @@ export default function InputImage(props) {
     setOutputs([]);
     setImageToPredict(imageUrl);
     axios
-      .post("/predict", {
+      .post("http://localhost:5000/predict", {
         imageUrl: imageUrl,
       })
       .then((res) => {
@@ -68,7 +68,7 @@ export default function InputImage(props) {
     }
 
     axios
-      .post("/predict/upload", formData)
+      .post("http://localhost:5000/predict/upload", formData)
       .then((res) => {
         console.log(res.data.caption);
         setOutputs(res.data.caption);
