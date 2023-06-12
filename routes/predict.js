@@ -102,7 +102,7 @@ router.post('/', async function (req, res, next) {
             Write a short and crisp Instagram caption and 10 hashtags for the above image.`,
         };
 
-        axios.post('http://localhost:5000/chat', data)
+        axios.post('https://caption-generator-three.vercel.app/chat', data)
         .then((response) => {
             console.log("response coming from keyword is");
             console.log(response.data);
@@ -158,7 +158,7 @@ router.post('/upload', upload.single('file'), async function (req, res, next) {
             Write a short and crisp Instagram caption and 10 hashtags for the above image.`,
         };
 
-        axios.post('http://localhost:5000/chat', data)
+        axios.post('https://caption-generator-three.vercel.app/chat', data)
         .then((response) => {
             console.log("response coming from keyword is");
             console.log(response.data);

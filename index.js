@@ -30,7 +30,9 @@ app.get('/hello', function (req, res) {
 app.use('/predict', predictRouter);
 
 app.get('/', function (req, res) {
-    return res.sendFile(path.join(__dirname, "build", "index.html"))
+    res.json({
+        message:"working well"
+    })
 })
 
 
