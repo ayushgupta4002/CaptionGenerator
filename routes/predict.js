@@ -99,7 +99,7 @@ router.post('/', async function (req, res, next) {
             prompt: `You are a creative social media manager, we have an image with these 5 elements in it found via Image recognition API.
             1,2,3,4,5 (${label1},${label2},${label3},${label4},${label5})
         
-            Write a short and crisp Instagram caption and 10 hashtags for the above image.`,
+            Write a short and crisp Instagram caption and 10 hashtags for the above image. give 3 answers according to different moods like joy, excited , sad . Generate them in seperate lines`,
         };
 
         axios.post('http://localhost:5000/chat', data)
@@ -155,7 +155,7 @@ router.post('/upload', upload.single('file'), async function (req, res, next) {
             prompt: `You are a creative social media manager, we have an image with these 5 elements in it found via Image recognition API.
             1,2,3,4,5 (${label1},${label2},${label3},${label4},${label5})
         
-            Write a short and crisp Instagram caption and 10 hashtags for the above image.`,
+            Write a short and crisp Instagram caption and 10 hashtags for the above image. give 3 answers according to different moods like joy, excited , sad . Generate them in seperate lines`,
         };
 
         axios.post('http://localhost:5000/chat', data)

@@ -1,64 +1,84 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser')
-const http = require('http');
-const predictRouter = require('./routes/predict');
-const cors = require('cors')
+const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
+const http = require("http");
+const predictRouter = require("./routes/predict");
+const cors = require("cors");
 const app = express();
 app.use(express.json());
 // We added bodyParser so that we can access `body` in `req` later
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-app.use(express.static(path.join(__dirname, 'public')));
-const dotenv = require('dotenv');
-dotenv.config()
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "public")));
+const dotenv = require("dotenv");
+dotenv.config();
 
-const OPENAI_API_KEY=process.env.OPENAI_KEY;
-const { Configuration, OpenAIApi }= require('openai') ;
+const OPENAI_API_KEY = process.env.OPENAI_KEY;
+console.log(OPENAI_API_KEY)
+const { Configuration, OpenAIApi } = require("openai");
+const { error } = require("console");
 const configuration = new Configuration({
-
-    apiKey: OPENAI_API_KEY,
+  apiKey: OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
 app.use(express.json());
 app.use(cors());
 
-app.get('/hello', function (req, res) {
-    res.send("hello")
+app.get("/hello", function (req, res) {
+  res.send("hello");
 });
-app.use('/predict', predictRouter);
+app.use("/predict", predictRouter);
 
-app.get('/', function (req, res) {
-    return res.sendFile(path.join(__dirname, "build", "index.html"))
-})
-
-
-app.post("/chat",(req,res) => {
-    console.log("test1")
-    const question= req.body.prompt;
-    console.log(question);
-    openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: question,
-        max_tokens: 4000,
-        temperature: 0,
-      }).then((response)=>{
-        res.send(
-            response.data.choices[0].text)
-        console.log(response.data.choices[0].text);
-      });
-   
+app.get("/", function (req, res) {
+  return res.sendFile(path.join(__dirname, "build", "index.html"));
 });
-  
 
+// app.post("/chatmain", (req, res) => {
+//   console.log("test1");
+//   const question = req.body.prompt;
+//   console.log(question);
+//   openai
+//     .createCompletion({
+//       model: "text-davinci-002",
+//       prompt: question,
+//       max_tokens: 2048,
+//       temperature: 0,
+//     })
+//     .then((response) => {
+//       res.send(response.data.choices[0].text);
+//       console.log(response.data.choices[0].text);
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// });
 
+app.post("/chat", (req, res) => {
+  console.log("test1");
+  const question = req.body.prompt;
+  console.log(question);
+  openai
+    .createCompletion({
+      model: "text-davinci-003",
+      prompt: question,
+      max_tokens: 4000,
+      temperature: 0,
+    })
+    .then((response) => {
+      res.send(response.data.choices[0].text);
+      console.log(response.data.choices[0].text);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
 
-const port = process.env.PORT || '5000';
+const port = process.env.PORT || "5000";
 
-app.set('port', port);
+app.set("port", port);
 const server = http.createServer(app);
 server.listen(port);
-server.on('listening', () => {
-    console.log('Listening on =>' + (port));
+server.on("listening", () => {
+  console.log("Listening on =>" + port);
 });

@@ -1,9 +1,10 @@
 import React from "react";
 import { Table, Row, Col } from "react-bootstrap";
 import "./App.css";
+import PulseLoader from "react-spinners/PulseLoader";
 
 export default function Output(props) {
-  const { outputs = [], imageToPredict } = props;
+  const { outputs = [], imageToPredict, loading } = props;
 
   return (
     <Row className="mt-3">
@@ -31,16 +32,24 @@ export default function Output(props) {
               <th>
                 <div className="copy">
                   <div>Caption</div>
-                  <button className="copybutton"
+                  <button
+                    className="copybutton"
                     onClick={() => {
                       navigator.clipboard.writeText(outputs);
-                      document.getElementById("custom-tooltip").style.display = "inline";
+                      document.getElementById("custom-tooltip").style.display =
+                        "inline";
                       setTimeout(function () {
-                          document.getElementById("custom-tooltip").style.display = "none";
+                        document.getElementById(
+                          "custom-tooltip"
+                        ).style.display = "none";
                       }, 1000);
                     }}
                   >
-                    <img src={require("./Assets/copymain2.png")} alt="" style={{"width":"20px"}} />
+                    <img
+                      src={require("./Assets/copymain2.png")}
+                      alt=""
+                      style={{ width: "20px" }}
+                    />
                   </button>
                   <span id="custom-tooltip">copied!</span>
                 </div>
@@ -50,7 +59,8 @@ export default function Output(props) {
             </tr>
           </thead>
           <tbody>
-            {outputs}
+            
+            {loading ? <PulseLoader color="#36d7b7" size={12} /> : outputs}
             {/* { 
                             outputs.map((o, i) => {
                             return <tr key={i}>

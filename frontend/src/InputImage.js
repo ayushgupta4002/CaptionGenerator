@@ -22,7 +22,7 @@ const inputOptions = [
 ];
 
 export default function InputImage(props) {
-  const { setOutputs, setImageToPredict } = props;
+  const { setOutputs, setImageToPredict , setLoading } = props;
   const [inputOption, setInputOption] = useState("imageURL");
 
 
@@ -42,12 +42,15 @@ export default function InputImage(props) {
   const predictImage = () => {
     setOutputs([]);
     setImageToPredict(imageUrl);
+    setLoading(true);
     axios
       .post("http://localhost:5000/predict", {
         imageUrl: imageUrl,
       })
       .then((res) => {
+        setLoading(false)
         setOutputs(res.data.caption);
+        
       })
       .catch((err) => {
         alert(err);
@@ -56,9 +59,12 @@ export default function InputImage(props) {
 
   const predictImageViaUpload = () => {
     setOutputs([]);
+
     const formData = new FormData();
     formData.append("file", fileObj);
     const reader = new FileReader();
+    setLoading(true);
+
     reader.addEventListener("load", function () {
       setImageToPredict(reader.result);
     });
@@ -72,6 +78,8 @@ export default function InputImage(props) {
       .then((res) => {
         console.log(res.data.caption);
         setOutputs(res.data.caption);
+        setLoading(false);
+
 
       })
       .catch((err) => {

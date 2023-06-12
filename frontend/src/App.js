@@ -22,6 +22,7 @@ const clerkPubKey = "pk_test_YXNzdXJlZC1wb29kbGUtNDguY2xlcmsuYWNjb3VudHMuZGV2JA"
 function App() {
   const [outputs, setOutputs] = useState([]);
   const [imageToPredict, setImageToPredict] = useState("");
+  let [loading, setLoading] = useState(false);
 
 
   return (
@@ -45,8 +46,8 @@ function App() {
       <Container>
         <div className="mt-3" />
         <Stack gap={2}>
-          <InputImage setOutputs={setOutputs} setImageToPredict={setImageToPredict} />
-          <Output outputs={outputs} imageToPredict={imageToPredict} />
+          <InputImage setOutputs={setOutputs} setImageToPredict={setImageToPredict} setLoading={setLoading} />
+          <Output outputs={outputs} imageToPredict={imageToPredict} loading={loading} />
         </Stack>
       </Container>
       </SignedIn>
