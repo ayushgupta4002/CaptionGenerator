@@ -44,7 +44,7 @@ export default function InputImage(props) {
     setImageToPredict(imageUrl);
     setLoading(true);
     axios
-      .post("http://localhost:5000/predict", {
+      .post("https://caption-generator-three.vercel.app/predict", {
         imageUrl: imageUrl,
       })
       .then((res) => {
@@ -74,7 +74,7 @@ export default function InputImage(props) {
     }
 
     axios
-      .post("http://localhost:5000/predict/upload", formData)
+      .post("https://caption-generator-three.vercel.app/predict/upload", formData)
       .then((res) => {
         console.log(res.data.caption);
         setOutputs(res.data.caption);

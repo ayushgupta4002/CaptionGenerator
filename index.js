@@ -30,8 +30,33 @@ app.get("/hello", function (req, res) {
 });
 app.use("/predict", predictRouter);
 
+<<<<<<< HEAD:app.js
 app.get("/", function (req, res) {
   return res.sendFile(path.join(__dirname, "build", "index.html"));
+=======
+app.get('/', function (req, res) {
+    res.json({
+        message:"working well"
+    })
+})
+
+
+app.post("/chat",(req,res) => {
+    console.log("test1")
+    const question= req.body.prompt;
+    console.log(question);
+    openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: question,
+        max_tokens: 4000,
+        temperature: 0,
+      }).then((response)=>{
+        res.send(
+            response.data.choices[0].text)
+        console.log(response.data.choices[0].text);
+      });
+   
+>>>>>>> a5a790e1f505547b3cc8b5dfd98eca6227c8e218:index.js
 });
 
 // app.post("/chatmain", (req, res) => {
