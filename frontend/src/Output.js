@@ -38,7 +38,7 @@ export default function Output(props) {
                   <button
                     className="copybutton"
                     onClick={() => {
-                      navigator.clipboard.writeText(outputs);
+                      navigator.clipboard.writeText(paragraph);
                       document.getElementById("custom-tooltip").style.display =
                         "inline";
                       setTimeout(function () {
