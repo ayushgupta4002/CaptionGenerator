@@ -5,6 +5,9 @@ import PulseLoader from "react-spinners/PulseLoader";
 
 export default function Output(props) {
   const { outputs = [], imageToPredict, loading } = props;
+  var paragraph=outputs + '';
+  const parts = paragraph.split(/(?=Excited:|Sad:)/);
+
 
   return (
     <Row className="mt-3">
@@ -59,8 +62,10 @@ export default function Output(props) {
             </tr>
           </thead>
           <tbody>
+
+
             
-            {loading ? <PulseLoader color="#36d7b7" size={12} /> : outputs}
+            {loading ? <PulseLoader color="#36d7b7" size={12} /> : <> <p>{parts[0] }</p> <p> {parts[1] }</p> <p>{parts[2]} </p></> }
             {/* { 
                             outputs.map((o, i) => {
                             return <tr key={i}>
